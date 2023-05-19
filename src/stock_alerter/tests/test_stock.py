@@ -2,14 +2,53 @@ import unittest
 from datetime import datetime
 from stock_alerter.stock import Stock
 class StockTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.stock = Stock("GOOG")
+    
     def test_price_of_a_new_stock_class_should_be_None(self):
-        stock = Stock("GOOG")
-        self.assertIsNone(stock.price)
+        self.assertIsNone(self.stock.price)
 
     def test_stock_update(self):
         """
         
         """
-        stock = Stock("GOOG")
-        stock.update(datetime(2014, 2, 12), price=10)
-        self.assertEqual(10, stock.price)
+        
+        self.stock.update(datetime(2014, 2, 12), price=10)
+        self.assertEqual(10, self.stock.price)
+        
+    def test_negative_price_should_throw_ValueError(self):
+        
+        with self.assertRaises(ValueError):
+            self.stock.update(datetime(2014, 2, 13), -1)
+        
+    def test_stock_price_should_give_the_latest_price(self):
+        self.stock.update(datetime(2014, 2, 12), price=10)
+        self.stock.update(datetime(2014, 2, 13), price=8.4)
+        self.assertAlmostEqual(8.4, self.stock.price, delta=0.0001)
+        
+        
+
+'''
+assertIsNone
+assertEqual
+assertRaises
+assertAlmostEqual
+fail
+
+
+assertFalse(x, msg), assertTrue(x, msg)
+assertIsNone(x, msg), assertIsNotNone(x, msg)
+assertEqual(x, y, msg), assertNotEqual(x, y, msg)
+assertAlmostEqual(x, y, places, msg, delta), assertNotAlmostEqual(x, y, places, msg, delta)
+assertGreater(x, y, msg), assertGreaterEqual(x, y, msg)
+assertLess(x, y, msg), assertLessEqual(x, y, msg)
+assertIs(x, y, msg), assertIsNot(x, y, msg)
+assertIn(x, seq, msg), assertNotIn(x, seq, msg)
+assertIsInstance(x, cls, msg), assertNotIsInstance(x, cls, msg)
+assertRegex(text, regex, msg), assertNotRegex(text, regex, msg)
+assertRaises(exception, callable, *args, **kwargs)
+fail(msg)
+
+
+
+'''        
