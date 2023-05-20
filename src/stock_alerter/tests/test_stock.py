@@ -51,4 +51,56 @@ fail(msg)
 
 
 
+import unittest
+
+def setUpModule():
+    print("setUpModule")
+
+def tearDownModule():
+    print("tearDownModule")
+
+class Class1Test(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        print("  setUpClass")
+
+    @classmethod
+    def tearDownClass(cls):
+        print("  tearDownClass")
+
+    def setUp(self):
+        print("       setUp")
+
+    def tearDown(self):
+        print("       tearDown")
+
+    def test_1(self):
+        print("         class 1 test 1")
+
+    def test_2(self):
+        print("         class 1 test 2")
+
+class Class2Test(unittest.TestCase):
+    def test_1(self):
+        print("         class 2 test 1")
+
+
+output:
+
+setUpModule
+  setUpClass
+       setUp
+         class 1 test 1
+       tearDown
+       setUp
+         class 1 test 2
+       tearDown
+  tearDownClass
+         class 2 test 1
+tearDownModule
+
+
+
+Class level and module level setups are only used when there is an expensive setup step, such as making a connection to a database or a remote server, and it is preferable to do this setup just once and share it between all the tests.
+
 '''        
