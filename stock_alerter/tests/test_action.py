@@ -30,7 +30,7 @@ class EmailActionTest(unittest.TestCase):
         self.addCleanup(patcher.stop)
         self.mock_smtp_class = patcher.start()
         self.mock_smtp = self.mock_smtp_class.return_value
-        self.action = EmailAction(to="siddharta@silverstripesoftware.com")
+        self.action = EmailAction(to="kang7.wang@gmail.com")
 
     def test_email_is_sent_to_the_right_server(self):
         self.action.execute("MSFT has crossed $10 price level")
@@ -62,7 +62,7 @@ class EmailActionTest(unittest.TestCase):
         expected_message = {
             "Subject": "New Stock Alert",
             "Message": "MSFT has crossed $10 price level",
-            "To": "siddharta@silverstripesoftware.com",
+            "To": "kang7.wang@gmail.com",
             "From": "alerts@stocks.com"
         }
         self.action.execute("MSFT has crossed $10 price level")
