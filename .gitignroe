@@ -3,3 +3,8 @@
 .gitignore
 *.log
  secrets/*
+
+# Local .terraform directories
+**/.terraform/*
+
+*.tfstate*.tfstate.*
