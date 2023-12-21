@@ -2,7 +2,7 @@
 *.csv
 .gitignore
 *.log
- secrets/*
+ secrets/**
 
 # Local .terraform directories
 **/.terraform/*
