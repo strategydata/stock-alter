@@ -5,7 +5,7 @@ import time
 import datetime
 import subprocess
 from prefect_gcp import GcpCredentials, GcsBucket
-from prefect import flow,task
+from prefect import flow,task,get_run_logger
 from prefect.task_runners import SequentialTaskRunner
 from prefect.deployments import Deployment
 
@@ -166,6 +166,10 @@ def submit_spark_job(spark_cluster_name, spark_job_region, gcs_bucket_name, bq_d
 @flow(name="main_flow", log_prints=True, task_runner=SequentialTaskRunner())
 def main_flow(gcp_key_path, alpha_vantage_key, from_date, to_date, gcs_bucket_name, bq_dataset_name, bq_table_name, spark_cluster_name, spark_job_region, spark_job_file):
     #Set a timer to track time to complete
+    # logger = get_run_logger()
+
+    # logger.info("%s repository statistics 🤓:")
+
     start = time.time()     
     #Dictionary of top 5 technology stocks with their symbol/ticker and names. These have been identified by market cap and their sentiment data available via Alphavantage API. Market cap & tickets at -> https://www.nasdaq.com/market-activity/stocks/screener
     symbols_dict = {'AAPL' : 'Apple', 'MSFT' : 'Microsoft', 'GOOG' : 'Google', 'META' : 'Meta', 'ASML': 'ASML Holding N.V. New York'}
@@ -191,9 +195,9 @@ def main_flow(gcp_key_path, alpha_vantage_key, from_date, to_date, gcs_bucket_na
 #Code to build deployment of main flow
 deployment = Deployment.build_from_flow(
     flow=main_flow,
-    name="Data Pipeline Main Flow - DE ZC 2023",
+    name="Data Pipeline Main Flow - Amber Data",
     parameters=
-                {"gcp_key_path" : "/project/stock-alter/secrets/gcp_key.json",
+                {"gcp_key_path" : "/home/project/stock-alter/secrets/gcp_key.json",
                 "alpha_vantage_key" : "alpha_vantage_key",
                 "from_date" : "2023-03-27",
                 "to_date": "2023-04-03" ,
@@ -206,4 +210,15 @@ deployment = Deployment.build_from_flow(
                 )
 
 if __name__ == "__main__":
-    deployment.apply()
+    main_flow("/Project/stock-alter/secrets/gcp_key.json",
+                "alpha_vantage_key",
+                 "2023-03-27",
+                "2023-04-03" ,
+                "your_gcs_bucket_name", 
+                "your_bq_dataset_name", 
+                 "your_bq_table_name",
+                 "your-spark-cluster-name", 
+                "your_region",
+                "spark_job.py")
+    
+    
