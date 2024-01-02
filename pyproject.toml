@@ -1,3 +1,11 @@
+[tool.bandit]
+exclude_dirs = ["tests"]
+skips = ["B608"] # Never enforce `B608` (hardcoded credentials).
+
+[tool.coverage.report]
+show_missing = true
+
+
 [tool.poetry]
 name = "stock-alter"
 version = "0.1.0"
@@ -9,13 +17,48 @@ readme = "README.md"
 python = "^3.10"
 prefect = "^2.14.11"
 prefect-gcp = "^0.5.5"
-requests = "^2.31.0"
 pandas = "^2.1.4"
+requests = "^2.31.0"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
+ruff = "^0.1.9"
+mypy = "^1.8.0"
+bandit = "^1.7.6"
+pre-commit = "^3.6.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+
+[tool.ruff.lint]
+# 2. Avoid enforcing line-length violations (`E501`)
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+line-ending = "auto"
+
+
+[tool.pytest.ini_options]
+pythonpath= [
+    ".","dags","tests"
+]
+testpaths = "tests"
+filterwarnings = [
+    "ignore:Deprecated call to `pkg_resources\\.declare_namespace\\('.*'\\):DeprecationWarning",
+    "ignore::DeprecationWarning:google.rpc",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "requests",
+    "prefect_gcp",
+    "pandas",
+    "os"
+]
+ignore_missing_imports = true
