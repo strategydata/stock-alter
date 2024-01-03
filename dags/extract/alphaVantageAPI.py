@@ -193,32 +193,32 @@ def main_flow(gcp_key_path, alpha_vantage_key, from_date, to_date, gcs_bucket_na
 
 
 #Code to build deployment of main flow
-deployment = Deployment.build_from_flow(
-    flow=main_flow,
-    name="Data Pipeline Main Flow - Amber Data",
-    parameters=
-                {"gcp_key_path" : "/home/project/stock-alter/secrets/gcp_key.json",
-                "alpha_vantage_key" : "alpha_vantage_key",
-                "from_date" : "2023-03-27",
-                "to_date": "2023-04-03" ,
-                "gcs_bucket_name": "your_gcs_bucket_name", 
-                "bq_dataset_name" : "your_bq_dataset_name", 
-                "bq_table_name" : "your_bq_table_name",
-                "spark_cluster_name" : "your-spark-cluster-name", 
-                "spark_job_region" : "your_region",
-                "spark_job_file" :"spark_job.py"}
-                )
+# deployment = Deployment.build_from_flow(
+#     flow=main_flow,
+#     name="Data Pipeline Main Flow - Amber Data",
+#     parameters=
+#                 {"gcp_key_path" : "/home/project/stock-alter/secrets/gcp_key.json",
+#                 "alpha_vantage_key" : "alpha_vantage_key",
+#                 "from_date" : "2023-03-27",
+#                 "to_date": "2023-04-03" ,
+#                 "gcs_bucket_name": "your_gcs_bucket_name", 
+#                 "bq_dataset_name" : "your_bq_dataset_name", 
+#                 "bq_table_name" : "your_bq_table_name",
+#                 "spark_cluster_name" : "your-spark-cluster-name", 
+#                 "spark_job_region" : "your_region",
+#                 "spark_job_file" :"spark_job.py"}
+#                 )
 
-if __name__ == "__main__":
-    main_flow("/Project/stock-alter/secrets/gcp_key.json",
-                "alpha_vantage_key",
-                 "2023-03-27",
-                "2023-04-03" ,
-                "your_gcs_bucket_name", 
-                "your_bq_dataset_name", 
-                 "your_bq_table_name",
-                 "your-spark-cluster-name", 
-                "your_region",
-                "spark_job.py")
+# if __name__ == "__main__":
+#     main_flow("/Project/stock-alter/secrets/gcp_key.json",
+#                 "alpha_vantage_key",
+#                  "2023-03-27",
+#                 "2023-04-03" ,
+#                 "your_gcs_bucket_name", 
+#                 "your_bq_dataset_name", 
+#                  "your_bq_table_name",
+#                  "your-spark-cluster-name", 
+#                 "your_region",
+#                 "spark_job.py")
     
     

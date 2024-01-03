@@ -30,4 +30,5 @@ terraform plan -var="project_name=your_gcp_project_id" -var="region=your_region"
 terraform apply -var="project_name=your_gcp_project_id" -var="region=your_region" -var="gcs_bucket_name=your_gcs_bucket_name" -var="bq_dataset_name=your_bq_dataset_name" -var="spark_cluster_name=your-spark-cluster-name"
 
 python pipeline_deployment_build.py
-prefect agent start -q default
+
+echo "Onboarding script ran successfully"
