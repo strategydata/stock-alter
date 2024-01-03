@@ -18,12 +18,22 @@ provider "google" {
 resource "google_storage_bucket" "data-lake-bucket" {
     name =var.gcs_bucket_name
     location = var.region
+
     storage_class = var.storage_class
     uniform_bucket_level_access = true
+
     versioning {
       enabled = true
     }
     force_destroy = true
+}
+
+
+resource "google_bigquery_dataset" "dataset" {
+  dataset_id = var.bq_dataset_name
+  project = var.project_name
+  location = var.region
+  delete_contents_on_destroy = true
 }
 
 resource "google_dataproc_cluster" "dataproc-cluster" {
