@@ -21,6 +21,11 @@ pandas = "^2.1.4"
 requests = "^2.31.0"
 pytrends = "^4.9.2"
 plotly = "^5.18.0"
+finnhub-python = "^2.4.19"
+pyspark = "^3.5.0"
+pylint = "^3.0.3"
+flake8 = "^7.0.0"
+vulture = "^2.10"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -61,6 +66,7 @@ module = [
     "requests",
     "prefect_gcp",
     "pandas",
-    "os"
+    "os",
+    "finnhub"
 ]
 ignore_missing_imports = true
