@@ -1,0 +1,21 @@
+.prefectignore
+
+
+# python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+
+
+# Type checking artifacts
+.mypy_cache/
+
+
+.vscode/
+
+
+.mypy_cache/
+*.json
+

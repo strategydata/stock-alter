@@ -29,3 +29,8 @@ variable "spark_cluster_name" {
   description = "dataProc cluster name"
   type = string
 }
+
+# variable "compute_instance_name" {
+#     description = "google compute instance name"
+#     type = string
+# }

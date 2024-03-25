@@ -5,6 +5,7 @@
 .gitignore
 .pylintrc
 README.md
+**.csv
 
 # Folders
 .github/
@@ -13,7 +14,7 @@ tests/
 
 
 # Terraform
-infra/
+# infra/
 
 # Cache
 __pycache__/

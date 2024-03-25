@@ -58,7 +58,7 @@ prepare-python:
 
 mypy:
 	@echo "Running mypy..."
-	@poetry run mypy dags/extract/ --ignore-missing-imports
+	@poetry run mypy extract/ --ignore-missing-imports
 
 pytest:
 	@echo "Running pytest ...."

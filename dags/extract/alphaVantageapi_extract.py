@@ -9,6 +9,7 @@ from prefect import flow,task,get_run_logger
 from prefect.task_runners import SequentialTaskRunner
 from prefect.deployments import Deployment
 
+
 # Part 1 - Fetch data
 # A - pull time series daily adjested stock data using Alpha Vantage API
 # B - pull time series sentiments data in batches - 5 Days at a time using Alpa Vantage API

@@ -26,6 +26,7 @@ pyspark = "^3.5.0"
 pylint = "^3.0.3"
 flake8 = "^7.0.0"
 vulture = "^2.10"
+amber-data-utils = "^0.1.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -67,6 +68,10 @@ module = [
     "prefect_gcp",
     "pandas",
     "os",
-    "finnhub"
-]
+    "finnhub",
+    "prefect",
+    "amber-data-utils",
+    "secret_api",
+    "amberdata.orchestration_utils"
+    ]
 ignore_missing_imports = true

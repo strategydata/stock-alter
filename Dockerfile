@@ -9,9 +9,9 @@ ENTRYPOINT ["bash"]
 COPY . .
 
 
-# RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
-RUN pip install poetry==1.7.1
 
+RUN pip install poetry==1.7.1
+RUN poetry install --without dev --no-root && rm -rf $POETRY_CACHE_DIR
 # RUN apt update \
 #     & apt-get install sudo
 # RUN apt-get upfate && apt-get install -y lsb-release && apt-get clean all
